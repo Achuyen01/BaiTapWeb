@@ -1,0 +1,53 @@
+body {
+    max-width: 1060px;
+    margin: 0px auto;
+}
+
+h1 {
+    color: red;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+h3 {
+    color: blue;
+}
+
+p.p1 {
+    font-size: medium;
+    font-style: italic;
+}
+.main-content {
+    display: flex;
+    width: auto;
+}
+.content {
+    flex-basis: 55%;
+    width: auto;
+}
+.insert-content {
+    flex-basis: 55%;
+    width: auto;
+    height: 50px;
+}
+input {
+    width: 90%;
+    height: auto;
+    padding: 15px 25px;
+    margin: 20px 0;
+    flex-basis: 50%;
+    float: right;
+}
+button {
+    background-color: orangered;
+    color: aliceblue;
+    font-weight: bold;
+    width: 100%;
+    padding: 12px 20px;
+    border: 1px solid orangered;
+    margin: 20px 0;
+}
+.textarea {
+    width: 100%;
+    float: right;
+}
