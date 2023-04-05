@@ -23,7 +23,6 @@ p.p1 {
 }
 .content {
     flex-basis: 55%;
-    width: auto;
     width: 90%;
     height: auto;
     padding: 13px 5px;
@@ -65,8 +64,15 @@ input {
     float: right;
     padding: 15px;
     border: 2px solid orangered;
-    margin: 20px 10px;
+    margin: 20px 20px;
     margin-right: 20px;
-    
+}
+
+.textarea {
+    width: auto;
+    height: auto;
+    margin: 20px 10px;
+    margin-left: auto;
+    text-align: left;
 
 }
