@@ -27,7 +27,6 @@ p.p1 {
     height: auto;
     padding: 13px 5px;
     margin: 30px 0px 15px 0px ;
-    flex-basis: 50%;
     float: right;
     margin-right: 30px;
     margin-left: 30px;
@@ -66,6 +65,7 @@ input {
     border: 2px solid orangered;
     margin: 20px 20px;
     margin-right: 20px;
+    
 }
 
 .textarea {
