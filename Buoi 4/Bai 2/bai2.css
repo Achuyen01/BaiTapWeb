@@ -70,3 +70,7 @@ p {
 .borderall {
     border-right: 10px;
 }
+.form-control{
+    width: 250px;
+    margin-left: 20px;
+}
