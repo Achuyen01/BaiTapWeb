@@ -1,0 +1,20 @@
+<script>
+    function tinh_tong(n)
+    {
+        var tong = 0;
+        var index = 0;
+        do
+        {
+            if (index % 3 == 0){
+                tong += index;
+            }
+            index++;
+        }
+        while (index <= n);
+
+        return tong;
+    }
+
+    var n = parseInt(prompt("Nhập số cần kiểm tra"));
+    document.write("Tổng số chẵn từ 1 tới " + n + " là: " + tinh_tong(n));
+</script>

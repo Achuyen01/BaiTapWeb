@@ -1,3 +1,7 @@
 .right {
     text-align: right;
 }
+.boder {
+    border: groove;
+    width: 500px;
+}
