@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <h1>Viết chương trình tính tổng của 2 số nhập vào từ trang web</h1>
+        <input type="text" id="number1" value="" placeholder="Số thứ nhất"/>
+        <input type="text" id="number2" value="" placeholder="Số thứ hai"/> <br/>
+        <span id="result"></span> <br/>
+        <input type="button" onclick="sum()" value="Tính tổng"/>
+        <script>
+            function sum(){
+                let a = Number(document.getElementById("number1").value);
+                let b = Number(document.getElementById("number2").value);
+
+                let sum = parseInt(a) + b;
+
+                document.getElementById('result').innerHTML = sum;
+            }
+        </script>
+    </body>
+</html>
