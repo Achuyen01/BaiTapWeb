@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title>Đăng kí người dùng</title>
+ <style type="text/css">
+  label {
+   display: block;
+   margin-top: 10px;
+  }
+
+  .error {
+   color: red;
+   font-size: 12px;
+   margin-top: 5px;
+  }
+ </style>
+</head>
+<body>
+    
+ <h1>Đăng kí người dùng</h1>
+ <form id="register-form">
+  <label for="fullname">Họ và tên:</label>
+  <input type="text" id="fullname" name="fullname">
+
+  <label for="email">Địa chỉ email:</label>
+  <input type="email" id="email" name="email">
+
+  <label for="dob">Ngày/tháng/năm sinh:</label>
+  <input type="text" id="dob" name="dob">
+
+  <label for="phone">Số điện thoại:</label>
+  <input type="tel" id="phone" name="phone"><br>
+
+  <input style="background: greenyellow; color: red;" type="submit" value="Đăng kí">
+ </form>
+
+ <div id="result"></div>
+
+ <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+ <script type="text/javascript">
+  $(document).ready(function() {
+   $('#register-form').submit(function(event) {
+    event.preventDefault();
+    var fullname = $('#fullname').val();
+    var email = $('#email').val();
+    var dob = $('#dob').val();
+    var phone = $('#phone').val();
+
+    // Kiểm tra dữ liệu nhập
+    if (fullname == '' || email == '' || dob == '' || phone == '') {
+     $('.error').remove();
+     $('#register-form').prepend('<div class="error">Vui lòng nhập đầy đủ thông tin.</div>');
+     return false;
+    }
+
+    if (phone.indexOf('+084') != 0) {
+     $('.error').remove();
+     $('#register-form').prepend('<div class="error">Số điện thoại phải bắt đầu bằng +084.</div>');
+     return false;
+    }
+
+    var today = new Date();
+    var birthDate = new Date(dob);
+    var age = today.getFullYear() - birthDate.getFullYear();
+    var m = today.getMonth() - birthDate.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+    }
+    if (age < 18) {
+     $('.error').remove();
+     $('#register-form').prepend('<div class="error">Bạn phải đủ 18 tuổi để đăng kí.</div>');
+     return false;
+    }
+
+    // In thông tin người dùng đã đăng kí
+    var result = '<h2>Thông tin người dùng đã đăng kí:</h2>';
+    result += '<p>Họ và tên: ' + fullname + '</p>';
+    result += '<p>Email: ' + email + '</p>';
+    result += '<p>Ngày/tháng/năm sinh: ' + dob + '</p>';
+    result += '<p>Số điện thoại: ' + phone + '</p>';
+    $('#result').html(result);
+   });
+  });
+ </script>
+</body>
+</html>

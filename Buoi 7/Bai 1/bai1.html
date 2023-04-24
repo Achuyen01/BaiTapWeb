@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title>Giải phương trình bậc 2</title>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+ <style>
+  p {
+   font-size: 20px;
+   font-weight: bold;
+   color: blue;
+  }
+ </style>
+</head>
+<body>
+ <h2>Giải phương trình bậc 2</h2>
+ <p>Nhập a:</p>
+ <input type="number" id="a">
+ <p>Nhập b:</p>
+ <input type="number" id="b">
+ <p>Nhập c:</p>
+ <input type="number" id="c">
+ <button id="solve">Giải phương trình</button>
+
+ <div id="result"></div>
+
+ <script>
+  $(document).ready(function(){
+   $("#solve").click(function(){
+    var a = parseInt($("#a").val());
+    var b = parseInt($("#b").val());
+    var c = parseInt($("#c").val());
+    if (isNaN(a) || isNaN(b) || isNaN(c) || a === 0) {
+     alert("Vui lòng nhập a, b, c hợp lệ!");
+    } else {
+     var delta = b*b - 4*a*c;
+     if (delta < 0) {
+      $("#result").text("Phương trình vô nghiệm");
+     } else if (delta === 0) {
+      var x = -b/(2*a);
+      $("#result").text("Phương trình có nghiệm kép x = " + x);
+     } else {
+      var x1 = (-b + Math.sqrt(delta))/(2*a);
+      var x2 = (-b - Math.sqrt(delta))/(2*a);
+      $("#result").text("Phương trình có hai nghiệm phân biệt: x1 = " + x1 + ", x2 = " + x2);
+     }
+    }
+   });
+  });
+ </script>
+</body>
+</html>
