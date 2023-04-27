@@ -1,90 +1,99 @@
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-<link rel="stylesheet" href="bai3.css" />
+ <title>Đăng ký</title>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+ <script>
+  $(document).ready(function(){
+   $("#submit").click(function(){
+    var name = $("#name").val();
+    var email = $("#email").val();
+    var phone = $("#phone").val();
+    var dob = $("#dob").val();
+    var gender = $("input[name='gender']:checked").val();
+    var province = $("#province").val();
+
+    if (name == "" || email == "" || phone == "" || dob == "") {
+     alert("Vui lòng nhập đầy đủ thông tin!");
+     return false;
+    }
+
+    if (!validateEmail(email)) {
+     alert("Địa chỉ email không hợp lệ!");
+     return false;
+    }
+
+    if (!validatePhone(phone)) {
+     alert("Số điện thoại không hợp lệ!");
+     return false;
+    }
+
+    var today = new Date();
+    var birthDate = new Date(dob);
+    var age = today.getFullYear() - birthDate.getFullYear();
+    var m = today.getMonth() - birthDate.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+    }
+    if (age < 18) {
+     alert("Bạn chưa đủ 18 tuổi!");
+     return false;
+    }
+
+    var info = "<p>Họ và tên: " + name + "</p>";
+    info += "<p>Email: " + email + "</p>";
+    info += "<p>Số điện thoại: " + phone + "</p>";
+    info += "<p>Ngày sinh: " + dob + "</p>";
+    info += "<p>Giới tính: " + gender + "</p>";
+    info += "<p>Tỉnh thành: " + province + "</p>";
+
+    $("#result").html(info);
+   });
+
+   function validateEmail(email) {
+       var re = /\S+@\S+\.\S+/;
+       return re.test(email);
+   }
+
+   function validatePhone(phone) {
+    if (phone.length != 12 || !phone.startsWith("+84")) {
+     return false;
+    }
+    var num = phone.substring(3);
+    if (isNaN(num)) {
+     return false;
+    }
+    return true;
+   }
+  });
+ </script>
 </head>
 <body>
-<script language="javascript" src="bai3.js"></script>
-<form action="" method="POST" onsubmit="return validate()">
-<div class="register">
-<h1>Đăng ký</h1>
-<p>Vui lòng điền thông tin để đăng ký</p>
-<hr>
-<label for="username"><b>Tên đăng nhập (*)</b></label>
-<input type="text" placeholder="Họ và tên" name="username" id="username">
-<label for="email"><b>Địa chỉ email (*)</b></label>
-<input type="email" placeholder="email" name="password" id="email">
-  <label for="number"><b>Số điện thoại (*)</b></label>
-<input type="text" placeholder="Số điện thoại" name="number" id="number">
-<hr>
-  <div class="demo">
-    <label for="date">Ngày</label>
-    <select name="Ngày"id="date">
-        <option value="#">1</option>
-        <option value="#">2</option>
-        <option value="#">3</option>
-        <option value="#">4</option>
-        <option value="#">5</option>
-        <option value="#">6</option>
-        <option value="#">7</option>
-        <option value="#">8</option>
-        <option value="#">9</option>
-        <option value="#">10</option>
-        <option value="#">11</option>
-       <option value="#">12</option>
-        <option value="#">13</option>
-        <option value="#">14</option>
-        <option value="#">15</option>
-        <option value="#">16</option>
-        <option value="#">17</option>
-        <option value="#">18</option>
-        <option value="#">19</option>
-        <option value="#">20</option>
-        <option value="#">21</option>
-        <option value="#">22</option>
-        <option value="#">23</option>
-        <option value="#">24</option>
-        <option value="#">25</option>
-        <option value="#">26</option>
-        <option value="#">27</option>
-        <option value="#">28</option>
-        <option value="#">29</option>
-        <option value="#">30</option>
-        <option value="#">31</option>
-    </select>
-    <label for="month">Tháng</label>
-    <select name="Tháng" id="month">
-        <option value="@">1</option>
-        <option value="@">2</option>
-        <option value="@">3</option>
-        <option value="@">4</option>
-        <option value="@">5</option>
-        <option value="@">6</option>
-        <option value="@">7</option>
-        <option value="@">8</option>
-        <option value="@">9</option>
-        <option value="@">10</option>
-        <option value="@">11</option>
-        <option value="@">12</option>
-    </select>
-    <label for="year">Năm</label>
-    <select name="Năm" id="year">
-        <option value="$">1995</option>
-        <option value="$">1996</option>
-        <option value="$">1997</option>
-        <option value="$">1998</option>
-        <option value="$">1999</option>
-        <option value="$">2000</option>
-        <option value="$">2001</option>
-        <option value="$">2002</option>
-        <option value="$">2003</option>
-        <option value="$">2004</option>
-        <option value="$">2005</option>
-        <option value="$">2006</option>
-    </select>
-<button type="submit" class="submit">Đăng ký</button>
-</div>
-</div>
-</form>
+ <form>
+  <label for="name">Họ và tên:</label>
+  <input type="text" id="name" name="name" required><br><br>
+  <label for="email">Địa chỉ email:</label>
+  <input type="email" id="email" name="email" required><br><br>
+  <label for="phone">Số điện thoại:</label>
+  <input type="tel" id="phone" name="phone" required><br><br>
+  <label for="dob">Ngày/tháng/năm sinh:</label>
+  <input type="date" id="dob" name="dob" required><br><br>
+  <label>Giới tính:</label><br>
+  <input type="radio" id="male" name="gender" value="Nam">
+    <label for="male">Nam</label><br>
+    <input type="radio" id="female" name="gender" value="Nữ">
+    <label for="female">Nữ</label><br><br>
+  <label for="province">Tỉnh thành:</label>
+  <select id="province" name="province">
+   <option value="Hà Nội">Hà Nội</option>
+   <option value="Hồ Chí Minh">Hồ Chí Minh</option>
+   <option value="Đà Nẵng">Đà Nẵng</option>
+   <option value="Hải Phòng">Hải Phòng</option>
+   <option value="Cần Thơ">Cần Thơ</option>
+  </select><br><br>
+  <input type="button" id="submit" value="Đăng ký">
+ </form>
+
+ <div id="result"></div>
 </body>
 </html>
